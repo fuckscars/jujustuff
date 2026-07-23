@@ -359,7 +359,7 @@ local menu = {
     theme = ""
 }
 
-do
+(function()
     -- > ( file system )
 
     do
@@ -25758,4 +25758,4 @@ do
     create_connection(crew:GetPropertyChangedSignal("Value"), LPH_NO_VIRTUALIZE(function()
         local_crew = crew["Value"]
     end))
-end
+end)()
