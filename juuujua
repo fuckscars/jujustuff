@@ -357,7 +357,7 @@ local menu = {
     initial_base_offset = 75,
     ordered_groups = {},
     theme = ""
-}
+};
 
 (function()
     -- > ( file system )
