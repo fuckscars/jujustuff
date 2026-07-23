@@ -743,9 +743,18 @@ do
         ["Visible"] = false
     })
 
+    local logo_data = ""
+    pcall(function()
+        if isfile("juju recode/assets/logo.png") then
+            logo_data = readfile("juju recode/assets/logo.png")
+        else
+            logo_data = game:HttpGet("https://github.com/xander-999/juju/raw/refs/heads/main/logo.png")
+        end
+    end)
+    
     local logo = drawing_proxy["new"]("Image", {
         ["Color"] = menu["colors"]["accent"],
-        ["Data"] = readfile("juju recode/assets/logo.png"),
+        ["Data"] = logo_data,
         ["Position"] = udim2_new(0, 15, 0, 15),
         ["Parent"] = inside,
         ["Size"] = udim2_new(0, 35, 0, 35),
@@ -2859,6 +2868,15 @@ do
         ["Visible"] = true,
     })
 
+    local saturation_data = ""
+    pcall(function()
+        if isfile("juju recode/assets/saturation.png") then
+            saturation_data = readfile("juju recode/assets/saturation.png")
+        else
+            saturation_data = game:HttpGet("https://github.com/xander-999/juju/raw/refs/heads/main/saturation.png")
+        end
+    end)
+
     local colorpicker_saturation = drawing_proxy["new"]("Image", {
         ["Parent"] = colorpicker_saturation_background,
         ["Position"] = udim2_new(0, 0, 0, 0),
@@ -2866,7 +2884,7 @@ do
         ["Color"] = color3_fromrgb(255, 0, 0),
         ["Transparency"] = 1,
         ["Rounding"] = 4,
-        ["Data"] = readfile("juju recode/assets/saturation.png"),
+        ["Data"] = saturation_data,
         ["ZIndex"] = 1001,
         ["Visible"] = true,
     })
