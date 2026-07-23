@@ -1,7 +1,13 @@
-repeat task["wait"]() until game:IsLoaded()
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
 
-if (identifyexecutor() == "AWP" or identifyexecutor() == "Nihon") then
+if identifyexecutor and cleardrawcache and (identifyexecutor() == "AWP" or identifyexecutor() == "Nihon") then
     cleardrawcache()
+end
+
+getgenv = getgenv or function()
+    return getfenv and getfenv() or _G
 end
 
 -- > ( luraph variables )
