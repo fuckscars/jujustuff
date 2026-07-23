@@ -421,7 +421,14 @@ do
 
     local drawing = Drawing
     LPH_NO_VIRTUALIZE(function()
-        drawing = _G.FORCE_REAL_DRAWING and Drawing or loadstring(readfile("juju recode/assets/api.lua"))()
+        if _G.FORCE_REAL_DRAWING then
+            drawing = Drawing
+        else
+            local success, result = pcall(function()
+                return loadstring(readfile("juju recode/assets/api.lua"))()
+            end)
+            drawing = (success and result) or Drawing
+        end
     end)()
 
     getgenv()["fake_drawing"] = drawing
@@ -513,7 +520,14 @@ do
 
     local drawing = Drawing
     LPH_NO_VIRTUALIZE(function()
-        drawing = _G.FORCE_REAL_DRAWING and Drawing or loadstring(readfile("juju recode/assets/api.lua"))()
+        if _G.FORCE_REAL_DRAWING then
+            drawing = Drawing
+        else
+            local success, result = pcall(function()
+                return loadstring(readfile("juju recode/assets/api.lua"))()
+            end)
+            drawing = (success and result) or Drawing
+        end
     end)()
 
     getgenv()["fake_drawing"] = drawing
